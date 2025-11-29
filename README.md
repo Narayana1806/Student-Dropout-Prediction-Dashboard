@@ -1,5 +1,5 @@
 # 🎓 AI-Based Student Dropout Prediction & Counseling Dashboard  
-### **by: VenkataLakshmiNarayana Narayana Pirla**
+### **by : VenkataLakshmiNarayana Narayana Pirla**
 ---
 
 ## 📌 Overview  
@@ -162,7 +162,7 @@ AI & ML Developer • Web Developer • UI/UX Designer
   </a>
 
   <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/in/lakshminarayana" target="_blank">
+  <a href="(https://www.linkedin.com/in/pirla-venkata-lakshmi-narayana-a38302256/)" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-Profile-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
 
