@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Success Predictor (Static) — WhatsApp Alerts</title>
+
+<link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+  <div class="container">
+    <header>
+      <button id="themeToggle" class="theme-toggle-btn">🎨 Change Theme</button>
+      <h1>🎓 STUDENT DROPOUT PREDICTION - DASHBOARD</h1>
+      <p>Calculate dropout risk and generate targeted counseling strategies.</p>
+    </header>
+
+    <div class="card left">
+      <h2 style="margin:0 0 16px 0">📝 Student Input Data</h2>
+
+      <form id="predictForm">
+        <div class="form-group-title">Personal & Family Context</div>
+        <div class="form-grid">
+          <div>
+            <label>👤Gender</label>
+            <select name="gender" required>
+            <option>SELECT</option>  
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div>
+            <label>🎒Age (6–25)</label>
+            <input type="number" name="age" min="6" max="25">
+          </div>
+          <div>
+            <label>🎓Locality</label>
+            <select name="locality" required>
+            <option>SELECT</option>  
+              <option value="Urban">Urban</option>
+              <option value="Rural">Rural</option>
+            </select>
+          </div>
+          <div>
+            <label>💛Family Relationship (1–5)</label>
+            <input type="number" name="famrel" min="1" max="5">
+          </div>
+        </div>
+       
+        <label>📚Family Education Level</label>
+        <select name="family_edu" required>
+        <option>SELECT</option>  
+          <option value="Well Educated">Well Educated</option>
+          <option value="Moderately Educated">Moderately Educated</option>
+          <option value="Poorly Educated">Poorly Educated</option>
+        </select>
+        
+        <div class="form-group-title">Academic & Behavioral Factors</div>
+        <div class="form-grid">
+          <div>
+            <label>📈Study Time (1–4)</label>
+            <input type="number" name="study" min="1" max="4">
+          </div>
+          <div>
+            <label>⚠Past Failures (0–5)</label>
+            <input type="number" name="failures" min="0" max="5">
+          </div>
+          <div>
+            <label>📅Absences (0-100)</label>
+            <input type="number" name="absences" min="0" max="100">
+          </div>
+          <div>
+            <label>🌐Internet Access</label>
+            <select name="internet" required>
+             <option>SELECT</option>
+              <option>Yes</option>
+              <option>no</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group-title">Grades (0–100)</div>
+        <div class="form-grid grade-grid">
+          <div>
+            <label>📝Grade 1</label>
+            <input type="number" name="g1" min="0" max="100">
+          </div>
+          <div>
+            <label>📝Grade 2</label>
+            <input type="number" name="g2" min="0" max="100">
+          </div>
+          <div>
+            <label>🏁Final Grade</label>
+            <input type="number" name="g3" min="0" max="100">
+          </div>
+        </div>
+        
+        <div class="form-group-title">Contact Information</div>
+        <label>📱Parent Phone (international, e.g. +919876543210)</label>
+        <input type="text" name="phone" placeholder="+91XXXXXXXXXX" required>
+
+        <div style="display:flex;gap:10px;margin-top:20px">
+          <button type="submit" class="primary">Predict Dropout Risk & Strategies</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card right">
+      
+      <div class="risk-score-elements">
+        <div class="result-head">
+          <div>
+            <h3 style="margin:0">📊 Predicted Dropout Risk</h3>
+            <p class="muted-small" id="riskText">No prediction yet — enter details and press Predict.</p>
+          </div>
+          <div class="risk-num" id="riskNumber">0%</div>
+        </div>
+
+        <div class="risk-bar" aria-hidden="true">
+          <div id="riskFill" class="risk-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="card result-card general-counseling-card">
+        <h4 style="margin:0 0 10px 0">🧠 General Counseling Context</h4>
+        <div id="counseling-tips-container" class="general-tips-grid">
+          </div>
+      </div>
+      
+      <div class="card result-card">
+        <h4 style="margin:0 0 10px 0">🎯 Targeted Intervention Strategies</h4>
+        <div id="tipsContainer" class="tips-list">
+          <div class="tip">No data yet — fill the form and run prediction.</div>
+        </div>
+      </div>
+
+      <div class="card result-card">
+        <h4 style="margin:0 0 8px 0">📩 WhatsApp Alert (High Risk)</h4>
+        <p.1 class="muted-small">If risk is **70% or higher**, you can send an alert to the parent's phone.</p.1>
+        <div class="wa-actions" id="waActions">
+          </div>
+        <p class="note">WhatsApp will open in a new tab/window using the official wa.me link. Ensure phone number is in international format.</p>
+      </div>
+    </div>
+
+<script src="/script.js"></script>
+  </div>
+</body>
+</html>

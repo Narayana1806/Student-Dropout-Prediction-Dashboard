@@ -1,0 +1,350 @@
+/* ---------------------------------------------
+GLOBAL / BACKGROUND STYLES
+--------------------------------------------- */
+:root{
+/* Define global constants */
+  --shadow: 0 4px 15px rgba(0,0,0,0.08); /* Soft shadow */
+  --primary-color: #007bff; /* Blue for primary accents (Default) */
+}
+    
+*{
+  box-sizing:border-box
+}
+    
+
+/* DEFAULT (LIGHT) THEME VARIABLES */
+body {
+/* Colors */
+  --bg-gradient: linear-gradient(135deg, #f0f4f8, #e0e9f0);
+  --text-color: #333;
+  --card-bg: #ffffff;
+  --card-border: #ddd;
+  --muted-text: #555;
+  --nested-card-bg: #f8f9fa;
+  --form-border: #ccc;
+}
+
+/* THEME 1: DARK (MIDNIGHT) */
+body.theme-dark {
+  --bg-gradient: linear-gradient(135deg, #121212, #1e293b 70%, #000000 100%);
+  --text-color: #f3f4f6;
+  --card-bg: rgba(255,255,255,0.08);
+  --card-border: rgba(255,255,255,0.06);
+  --muted-text: #ccc;
+  --nested-card-bg: rgba(255,255,255,0.04);
+  --form-border: rgba(255,255,255,0.1);
+  --primary-color: #8b5cf6; /* Violet primary color */
+}
+
+/* THEME 2: VIOLET (Updated from Deep Blue) */
+body.theme-violet {
+  --bg-gradient: linear-gradient(135deg, #3c096c, #5a189a, #9d4edd); /* Violet/Purple gradient */
+  --text-color: #f3e6ff;
+  --card-bg: rgba(255,255,255,0.15);
+  --card-border: rgba(255,255,255,0.1);
+  --muted-text: #e0b0ff;
+  --nested-card-bg: rgba(255,255,255,0.08);
+  --form-border: rgba(255,255,255,0.2);
+    --primary-color: #ffc43d; /* Amber/Gold primary color for contrast */
+  }
+
+/* STYLES APPLYING THEME VARIABLES */
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg-gradient);
+  color: var(--text-color);
+  min-height:100vh;
+  padding:24px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  transition: background 0.5s ease; /* Smooth transition for theme change */
+}
+
+/* Grid container for desktop layout (main two columns) */
+.container{
+  max-width:1200px; 
+  width:100%;
+  display:grid;
+
+/* DESKTOP VIEW: Left (Form) is 1.5 parts, Right (Results) is 1 part */
+
+  grid-template-columns: 1.5fr 1fr; 
+  gap:30px;
+}
+
+/* ---------------------------------------------
+HEADER & CARD STYLES
+ --------------------------------------------- */
+header{
+  grid-column:1 / -1; /* Header spans both columns */
+  text-align:center;
+  margin-bottom:12px;
+  color: var(--primary-color); 
+  position: relative; /* For positioning the button */
+}
+
+.theme-toggle-btn {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--card-border);
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Base card styling (Form and Right Column container) */
+.card{
+  background:var(--card-bg);
+  padding:24px; 
+  border-radius:12px; 
+  box-shadow: var(--shadow); 
+  border:1px solid var(--card-border); 
+  transition: background 0.5s;
+}
+    
+/* Nested result cards (for tips and WhatsApp area) */
+.result-card{
+  background: var(--nested-card-bg); 
+    padding:18px;
+    border: 1px solid var(--card-border);
+}
+
+/* ---------------------------------------------
+FORM STYLES (LEFT COLUMN)
+--------------------------------------------- */
+.form-group-title{
+  font-size:16px;
+  font-weight:700;
+  margin-top:20px;
+  padding-bottom:5px;
+  border-bottom:1px solid var(--form-border);
+  color: var(--text-color);
+}
+
+/* Grid for arranging form elements (2 columns wide on desktop) */
+.form-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+    gap:15px;
+    margin-top:10px;
+}
+    
+/* Specialized grid for the 3 grade inputs */
+.grade-grid{
+  grid-template-columns: repeat(3, 1fr);
+}
+
+label{
+  display:block;
+  font-weight:600;
+  margin-top:12px;
+  color:var(--muted-text)}
+    
+input[type="number"], input[type="text"], 
+
+select{
+  width:100%;
+  padding:10px 12px;
+  margin-top:6px;
+  border-radius:8px;
+  border:1px solid var(--form-border); 
+  font-size:15px;
+  background:#fff; /* Inputs fixed to white for readability */
+  color:#222;
+}
+    
+body.theme-dark input[type="number"], body.theme-dark input[type="text"], 
+body.theme-dark select,
+body.theme-violet input[type="number"], body.theme-violet input[type="text"], 
+body.theme-violet select {
+  background: #333; /* Dark inputs in dark themes */
+  color: #fff;
+  border-color: #666;
+}
+
+input[type="number"]:focus, input[type="text"]:focus, 
+select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem var(--primary-color, 0.25);
+    outline: none;
+}
+
+button.primary{
+  display:inline-block;
+  width:100%;
+  padding:14px 14px; 
+  margin-top:16px;
+  background:linear-gradient(90deg,#16a34a,#4ade80); /* Fixed green for action */
+  color:#042;
+  border:none;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  font-size:17px; 
+  box-shadow:0 4px 10px rgba(0, 123, 255, 0.4);
+}
+
+/* ---------------------------------------------
+RESULTS STYLES (RIGHT COLUMN)
+--------------------------------------------- */
+.right{
+  min-height:420px;
+  display:flex; 
+  flex-direction:column;
+  gap:16px; 
+}
+    
+/* Applying order property to define the visual sequence */
+.risk-score-elements { 
+    order: 1; 
+}
+
+.general-counseling-card { 
+  order: 2;
+}
+    
+/* Styles for the "Predicted Dropout Risk" number/text */
+  .result-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px
+}
+    
+.risk-num{
+  font-weight:800;
+  font-size:40px;
+  color:var(--primary-color)
+}
+    
+    
+/* Styles for the visual risk bar */
+.risk-bar{
+  height:20px; 
+  width:100%;
+  background:var(--nested-card-bg); /* Use theme variable for track */
+  border-radius:999px;
+  overflow:hidden;
+  border:1px solid var(--card-border);
+}
+    
+.risk-fill{
+  height:100%;
+  width:0%;
+      
+/* RAINBOW GRADIENT (Fixed) */
+background: linear-gradient(90deg, #ff0000, #ff8c00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+transition:width .8s ease;
+}
+
+/* Targeted Counseling tips (Dynamic) */
+.tips-list{
+  margin-top:0px;
+  display:flex;
+  flex-direction:column;
+  gap:10px}
+    
+.tip{
+  padding:12px 14px;
+  background: var(--card-bg); /* Use card background */
+  border-radius:10px;
+  border-left:6px solid #ffc107; /* Yellow */
+}
+    
+.tip.high{
+  border-left-color:#dc3545;
+  background: #ffe6e8; 
+  color: #333} 
+  /* Red for high risk tip styling */
+  body.theme-dark .tip.high, body.theme-violet .tip.high { 
+    background: rgba(220, 53, 69, 0.2); 
+    color: var(--text-color); }
+
+
+  /* General Counseling Tips (Static) */
+.general-tips-grid {
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:10px;
+}
+  
+.tip-box {
+  padding:12px;
+  background: var(--nested-card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  font-size:15px;
+}
+
+.tip-box strong {
+  display:block;
+  color:var(--primary-color);
+}
+
+/* WhatsApp area */
+.wa-actions{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+  flex-wrap:wrap
+}
+
+.open-wa{
+  background:#25D366;
+  color:#fff;
+  box-shadow:0 4px 10px rgba(37,211,102,0.4)}
+
+  .copy-btn{background:var(--muted-text);color:#fff;border:none}
+/* Footer note */
+.note{
+  font-size:13px;
+  opacity:0.95;
+  margin-top:8px;
+  color:var(--muted-text)}
+
+/* ---------------------------------------------
+RESPONSIVE DESIGN (DESKTOP & PHONE VIEW)
+--------------------------------------------- */
+
+/* TABLET/NARROW DESKTOP VIEW (Max width 1050px) */
+@media (max-width:1050px)
+
+{
+/* Layout Change: Switch from two columns to a single stacking column */
+.container{
+  grid-template-columns: 1fr
+}
+      
+/* Order Change: Ensure the Form (left) appears above the Results (right) */
+.right{
+  order:2}
+.left{
+  order:1}
+      
+/* Reposition button for mobile */
+.theme-toggle-btn { 
+top: -45px; 
+left: unset; 
+right: 0; }
+    
+/* Keep form elements two columns wide for better space use on tablets */
+.form-grid{
+  grid-template-columns: 
+  repeat(2, 1fr)
+}
+}
+    
+/* PHONE VIEW (Max width 600px) */
+@media (max-width:600px){
+/* Collapse all multi-column grids (Form fields, Grades, General Tips) into a single column (1fr) for phone readability */
+.form-grid, .grade-grid, .general-tips-grid{
+  grid-template-columns: 1fr;
+}
+}
